@@ -1,0 +1,42 @@
+﻿@model List<Tasks>
+@{
+}
+
+<h2 class="text-center mb-5">List of Tasks</h2>
+
+<div class="row mb-5">
+    <div class="col">
+        <a class="btn btn-primary" asp-controller="Tasks" asp-action="Create">New Task</a>
+    </div>
+    <div class="col">
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Task ID</th>
+            <th>Title</th>
+            <th>Desctription</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var tasks in Model)
+        {
+            <tr>
+                <td>@tasks.TaskId</td>
+                <td>@tasks.Title</td>
+                <td>@tasks.Description</td>
+
+                <td style="white-space:nowrap">
+                    <a class="btn btn-primary btn-sm" asp-controller="Tasks" asp-action="Edit"
+                       asp-route-id="@tasks.Id">Edit</a>
+                    <a class="btn btn-primary btn-sm" asp-controller="Tasks" asp-action="Delete"
+                       asp-route-id="@tasks.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
